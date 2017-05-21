@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/demo")
 public class DemoRestController {
 
-    static Logger log = Logger.getLogger(DemoViewController.class);
+    static Logger log = Logger.getLogger(DemoRestController.class);
 
     @RequestMapping(value = "/createThreads", method = RequestMethod.GET)
     public String createThreads(@RequestParam String threadCount) {
@@ -27,5 +27,19 @@ public class DemoRestController {
         return "0";
     }
 
+    @RequestMapping(value = "/loadRam", method = RequestMethod.GET)
+    public String loadRam(@RequestParam String mem) {
+        int memory = Integer.parseInt(mem);
+        log.info("Loading " + mem + " MiB RAM");
+        ActionService.loadRam(memory);
+        return mem;
+    }
+
+    @RequestMapping(value = "/loadCpu", method = RequestMethod.GET)
+    public String loadCpu() {
+        log.info("Loading CPU");
+        ActionService.loadCpu();
+        return "0";
+    }
     //TODO mem and CPU high usage, prob app stop, generate ideas :)
 }

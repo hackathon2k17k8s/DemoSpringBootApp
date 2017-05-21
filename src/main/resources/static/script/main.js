@@ -17,6 +17,18 @@ function gc() {
     makeGetRequest(url);
 }
 
+function ramLoad(MiB) {
+    var url = window.location.href;
+    url += "/loadRam?mem=" + MiB;
+    makeGetRequest(url);
+}
+
+function cpuLoad() {
+    var url = window.location.href;
+    url += "/loadCpu";
+    makeGetRequest(url);
+}
+
 function makeGetRequest(url) {
     hide();
     $.ajax({
