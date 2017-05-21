@@ -1,7 +1,6 @@
 package com.example.demo.services;
 
 import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 
@@ -9,15 +8,17 @@ public class ActionService {
 
     static Logger log = Logger.getLogger(ActionService.class);
 
-    public static void createThread(int count) {
+    public static int createThread(int count) {
         for(int i = 0; i < count; i++) {
             (new Thread(new DemoThread())).start();
         }
+        return count;
     }
 
-    public static void gc() {
+    public static int gc() {
         log.info("Running GC");
         System.gc();
+        return 0;
     }
 
     public static byte[] loadRam(int mem) {
@@ -26,12 +27,12 @@ public class ActionService {
         return stab;
     }
 
-    public static void loadCpu() {
-        log.warn("Generating high CPU load for 30 seconds");
-        long sleepTime = 30000000000L;
+    public static int loadCpu(int sec) {
+        log.warn("Generating high CPU load for " + sec + " seconds");
+        long sleepTime = sec * 1000000000L;
         long startTime = System.nanoTime();
         while ((System.nanoTime() - startTime) < sleepTime) {}
-        
+        return 0;
     }
 }
 

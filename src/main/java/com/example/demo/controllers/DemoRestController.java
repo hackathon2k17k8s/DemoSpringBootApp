@@ -38,7 +38,7 @@ public class DemoRestController {
     @RequestMapping(value = "/loadCpu", method = RequestMethod.GET)
     public String loadCpu() {
         log.info("Loading CPU");
-        ActionService.loadCpu();
+        ActionService.loadCpu(30);
         return "0";
     }
     //TODO mem and CPU high usage, prob app stop, generate ideas :)
