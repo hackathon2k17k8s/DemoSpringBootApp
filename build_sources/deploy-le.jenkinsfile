@@ -1,0 +1,11 @@
+node {
+    def le-token = 'c8d646c1-1891-45da-bcb9-49ac8955bc1d'
+    stage('Prepare') {
+        git 'https://github.com/jdumars/lekube.git'    
+        sh 'sed -i "s/value: xxxxxxxxxx/value: ${le-token}/" lekube.yaml'
+    }
+    stage('Deploy') {
+        sh 'kubectl create -f le-service.yaml'
+        sh 'kubectl create -f lekube.yaml'
+    }
+}
