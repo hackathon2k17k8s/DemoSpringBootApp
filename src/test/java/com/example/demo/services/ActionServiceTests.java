@@ -25,8 +25,8 @@ public class ActionServiceTests {
 
     @Test
     public void runRamTest() {
-        assertArrayEquals(new byte[1024*100], ActionService.loadRam(100));
-        assertArrayEquals(new byte[1024 * 1024], ActionService.loadRam(1024));
+        assertArrayEquals(new byte[1024 * 1024 * 100], ActionService.loadRam(100));
+        assertArrayEquals(new byte[1024 * 1024 * 1024], ActionService.loadRam(1024));
     }
 
     @Test

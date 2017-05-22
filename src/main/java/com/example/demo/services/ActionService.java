@@ -22,7 +22,7 @@ public class ActionService {
     }
 
     public static byte[] loadRam(int mem) {
-        byte[] stab = new byte[1024 * mem];
+        byte[] stab = new byte[1024 * 1024 * mem];
         log.info("Generated RAM load");
         return stab;
     }
