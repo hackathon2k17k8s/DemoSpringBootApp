@@ -42,3 +42,9 @@ function makeGetRequest(url) {
             $("#fail").fadeIn();
         });
 }
+
+function init() {
+    $.get('../commit.sha1', function (data) {
+       $("footer").append(data); 
+    });
+}
