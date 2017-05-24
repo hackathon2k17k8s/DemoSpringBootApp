@@ -1,7 +1,8 @@
-curl 'http://localhost:3000/api/dashboards/db' -X POST -H 'Content-Type: application/json;charset=UTF-8' --user admin:admin --data-binary '{ "Dashboard": { "__inputs": [
+{
+  "__inputs": [
     {
-      "name": "TEST",
-      "label": "Prometheus-test",
+      "name": "DS_TEST",
+      "label": "test",
       "description": "",
       "type": "datasource",
       "pluginId": "prometheus",
@@ -65,7 +66,7 @@ curl 'http://localhost:3000/api/dashboards/db' -X POST -H 'Content-Type: applica
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${TEST}",
+          "datasource": "${DS_TEST}",
           "fill": 1,
           "hideTimeOverride": false,
           "id": 1,
@@ -267,7 +268,7 @@ curl 'http://localhost:3000/api/dashboards/db' -X POST -H 'Content-Type: applica
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${TEST}",
+          "datasource": "${DS_TEST}",
           "fill": 1,
           "id": 3,
           "legend": {
@@ -445,7 +446,7 @@ curl 'http://localhost:3000/api/dashboards/db' -X POST -H 'Content-Type: applica
             "rgba(237, 206, 40, 0.89)",
             "rgba(45, 59, 172, 0.97)"
           ],
-          "datasource": "${TEST}",
+          "datasource": "${DS_TEST}",
           "decimals": null,
           "format": "none",
           "gauge": {
@@ -1162,7 +1163,6 @@ curl 'http://localhost:3000/api/dashboards/db' -X POST -H 'Content-Type: applica
     ]
   },
   "timezone": "browser",
-  "title": "Demo-dashboard-${BUILD_NUMBER}",
-  "version": 20}}'
-
-
+  "title": "Demo-dashboard-test",
+  "version": 20
+}
