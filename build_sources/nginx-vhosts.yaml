@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: demo
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  rules:
+  - host: "jenkins.com"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: one-jenkins
+          servicePort: 8080
+  - host: "prom.com"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: prom
+          servicePort: 8080
+  - host: "grafana.com"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana
+          servicePort: 8080
+  - host: "demo.com"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: demo-service-5
+          servicePort: 8080
