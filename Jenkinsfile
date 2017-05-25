@@ -34,8 +34,7 @@ node {
       docker login ${dockerhub_creds}
       docker tag demo_app-${BUILD_NUMBER} burakovsky/hdemo:${BUILD_NUMBER}
       docker push burakovsky/hdemo:${BUILD_NUMBER}
-      kubectl run demo-${BUILD_NUMBER} --image=burakovsky/hdemo:${BUILD_NUMBER} --expose=true --port 8080
-      kubectl expose deployment demo-${BUILD_NUMBER} --type=NodePort --name=demo-service-${BUILD_NUMBER}'''    
+      kubectl run release --image=burakovsky/hdemo:${BUILD_NUMBER} --expose=true --port 8080'''    
     }    
   }
 }
