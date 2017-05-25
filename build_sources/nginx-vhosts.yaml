@@ -6,7 +6,15 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "nginx"
     ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/tls-acme: "true"
 spec:
+  tls:
+  - secretName: jenkins-tls
+    hosts:
+    - jenkins.com
+  - secretName: bomba-tls
+    hosts:
+    - demo.bomba.by
   rules:
   - host: "jenkins.com"
     http:
@@ -29,7 +37,7 @@ spec:
         backend:
           serviceName: grafana
           servicePort: 8080
-  - host: "demo.com"
+  - host: "demo.bomba.by"
     http:
       paths:
       - path: /
